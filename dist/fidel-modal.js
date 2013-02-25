@@ -11,7 +11,9 @@ $.declare('modal', {
   defaults: {
     modalClass: 'modal',
     backdropClass: 'modal-backdrop',
-    backdropClick: true
+    backdropBlurClass: 'modal-backdrop-blur',
+    backdropClick: true,
+    blurBackdrop: false
   },
 
   init: function() {
@@ -33,11 +35,20 @@ $.declare('modal', {
   showBackdrop: function() {
     this.hideBackdrop();
     var el = $('<div/>').addClass(this.backdropClass);
-    $('body').append(el);
+    var body = $('body');
+
+    body.append(el);
+
+    if (this.blurBackdrop) {
+      body.addClass(this.backdropBlurClass);
+    }
   },
 
   hideBackdrop: function() {
     this.getBackdrop().remove();
+    if (this.blurBackdrop) {
+      $('body').removeClass(this.backdropBlurClass);
+    }
   },
 
   show: function() {

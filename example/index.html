@@ -17,6 +17,7 @@
 
     <button id="show">Show Modal</button>
     <button id="showBD">Show Modal with backdropClick = false</button>
+    <button id="showBlur">Show Modal with blurred backdrop</button>
     <div class="content">
       <button data-action="hide">X</button>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis commodo congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed nec mattis lacus. Nam sed metus id massa consequat cursus. In eu dui ut dolor tincidunt cursus. Nunc volutpat, nisi quis semper varius, velit velit dictum orci, nec tristique nisl dolor ac elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed aliquet faucibus sem euismod viverra. Nulla a eros eget leo bibendum ullamcorper.</p>
@@ -60,6 +61,9 @@
       });
       $('#showBD').on('click', function() {
         $('.content').modal({ backdropClick: false });
+      });
+      $('#showBlur').on('click', function() {
+        $('.content').modal({ blurBackdrop: true });
       });
     </script>
   </body>

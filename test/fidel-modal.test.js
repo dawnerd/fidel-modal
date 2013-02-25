@@ -56,6 +56,11 @@ suite('fidel.modal', function() {
     assert.equal($('.modal-backdrop').length, 1);
   });
 
+  test('blurred backdrop class added', function() {
+    el.modal({ blurBackdrop: true });
+    assert.equal($('.modal-backdrop-blur').length, 1);
+  });
+
   test('$().modal("hide") closes', function() {
     el.modal();
     assert.ok(el.hasClass('modal'));
@@ -123,6 +128,15 @@ suite('fidel.modal', function() {
     el.modal('hide');
 
     assert.equal($('body').css('overflow'), 'visible');
+
+  });
+
+  test('removes blur class when closed', function() {
+    el.modal({ blurBackdrop: true });
+
+    el.modal('hide');
+
+    assert.equal($('body').hasClass('modal-backdrop-blur'), false);
 
   });
 
